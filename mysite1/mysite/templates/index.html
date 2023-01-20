@@ -1,0 +1,13 @@
+I am in index html {{postLikeArray.0.0.title}}
+
+<ul>
+    {% for postLikesList in postLikeArray %}
+        <li> Title: {{postLikesList.0.title}} </li> 
+         <li> Content: {{postLikesList.0.content}} </li>
+        <li> Author: {{postLikesList.0.author}}</li>
+        {% for like in postLikesList.1 %}
+            liked by {{like.user}}
+            {% endfor %}
+    {% endfor %}
+</ul>
+

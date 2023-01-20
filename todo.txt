@@ -1,0 +1,51 @@
+going to have a feedback blog where users
+can write their feedback on something and others
+can like a post. 
+
+pages:
+admin page
+homepage (where you can write and like comments)
+
+
+endpoints:
+create user
+add post
+like post
+
+OPTIONAL --> delete post, edit post, unlike post. 
+
+Models:
+Users
+    username
+    email 
+    password
+posts:
+    timestamp
+    written by
+    the post 
+
+likes:
+    post_liked
+    liked_by
+    timestamp
+
+After create app --> 
+Create Docker container
+Add to GitHub 
+Deploy to AWS or Google Cloud 
+
+Questions for Evan:
+-If i use the defualt sqlite3 db how do i access it?
+- If i try to use the db they gave us in teh workshop... why isn't it working? What db would you use to see the info?
+I'm also interestined in understanding volumes --> aka a 
+
+
+Bite in the Butt:
+    1. username could be the same... need to make it unique but we used teh django defualt user class. 
+    2. 
+
+
+Docker steps:
+create dockerfile.txt (not sure about .txt)
+use command docker build to build docker image form file 
+use command docker run to start docker container and run app
