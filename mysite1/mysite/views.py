@@ -14,13 +14,15 @@ def index(request):
 
     # a for loop where we go through each of the items in the posts queryset and
     # input the actual post object into the aray
-
+    i = 0
     for post in posts:
         likes = Like.objects.filter(post=post)
         mylist = [post, likes]
         postLikeArray.append(mylist)
+        i = i + 1
 
-    # Inside the first loop (per post), we look for all of the likes that are associated with that post and
+
+# Inside the first loop (per post), we look for all of the likes that are associated with that post and
     # add to the second
     template_variables = {
         'foo': 'bar',
@@ -29,6 +31,10 @@ def index(request):
     }
     return render(request, "index.html", context=template_variables)
     # return HttpResponse("Hello, world!")
+
+
+def test_i(i, mylist, post):
+    i = mylist.count(post)
 
 
 @api_view(['GET', 'POST'])
@@ -52,5 +58,8 @@ def masterendpoint(request):
     }
 
     # return render(request, "index.html", context=template_variables)
-    return HttpResponse(User.objects.filter(
-        username=request.data.get("username")).first().email)
+    if request.data.get("username") is None:
+        return HttpResponse("No User")
+    else:
+        return HttpResponse(User.objects.filter(
+            username=request.data.get("username")).first().email)

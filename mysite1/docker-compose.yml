@@ -19,8 +19,13 @@ services:
              python manage.py migrate &&
              python manage.py makemigrations mysite &&
              python manage.py migrate mysite &&
-           
-             python manage.py runserver 0.0.0.0:8000"
+            {  
+              export DJANGO_SUPERUSER_EMAIL=test@test.com
+              export DJANGO_SUPERUSER_PASSWORD=test1 &&
+              python manage.py createsuperuser --noinput --username hanna &&
+              python manage.py runserver 0.0.0.0:8000
+            } || 
+            python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
