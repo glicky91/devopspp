@@ -49,3 +49,68 @@ Docker steps:
 create dockerfile.txt (not sure about .txt)
 use command docker build to build docker image form file 
 use command docker run to start docker container and run app
+
+
+ORDER:
+first sign in as an admin 
+then send insominia post 
+then look at url to see blog 
+clean up data folders ( you have 2 )especially clean up database__init__
+
+---------
+week 4 scratchpad 
+resource group: django-apps
+cluster name: djangocluster
+
+  "id": "/subscriptions/d5eba63c-dd87-48e3-93c5-11613005ef22/resourceGroups/django-apps",
+  "location": "eastus",
+  "managedBy": null,
+  "name": "django-apps",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+
+
+registry server name: hgdjangoregistry
+
+login server: hgdjangoregistry.azurecr.io
+
+name of postgress: hgworkshop4-server
+docker tag hellodjango-azure:latest hgdjangoregistry.azurecr.io/hellodjango-azure:v1
+
+external ip: 20.241.171.191
+
+
+az acr login -n hgdjangoregistry
+
+docker tag workshop4:latest hgdjangoregistry.azurecr.io/workshop4:v1
+
+docker push hgdjangoregistry.azurecr.io/workshop4:v1
+
+az postgres flexible-server create --resource-group django-apps --name hgworkshop4-server --database-name nc_tutorials_db --public-access all
+
+"host": "hgworkshop4-server.postgres.database.azure.com
+
+  "password": "ic8bkK2K6aG2dyUo_djp1Q",
+
+    "username": "boredpeacock0"
+
+
+    djangocluster
+    django-apps
+
+    az aks get-credentials --name djangocluster --resource-group django-apps
+
+
+    external ip 20.124.168.88
+
+    pod name workshop4-58c96d66f4-fs9cx
+
+    kubectl exec workshop4-58c96d66f4-fs9cx -- ls
+kubectl exec workshop4-58c96d66f4-fs9cx -- python manage.py makemigrations
+
+kubectl exec workshop4-58c96d66f4-fs9cx -- python manage.py migrate
+
